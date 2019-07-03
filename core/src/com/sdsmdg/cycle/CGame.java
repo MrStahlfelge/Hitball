@@ -3,7 +3,7 @@ package com.sdsmdg.cycle;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.sdsmdg.cycle.chelpers.AssetLoader;
-import com.sdsmdg.cycle.screens.SplashScreen;
+import com.sdsmdg.cycle.screens.GameScreen;
 
 import de.golfgl.gdxgamesvcs.IGameServiceClient;
 
@@ -22,7 +22,9 @@ public class CGame extends Game{
     public void create() {
         Gdx.app.log(TAG, "created");
         AssetLoader.load(Gdx.graphics.getWidth());
-        setScreen(new SplashScreen(this));
+
+        playServices.resumeSession();
+        setScreen(new GameScreen(this));
     }
 
     @Override

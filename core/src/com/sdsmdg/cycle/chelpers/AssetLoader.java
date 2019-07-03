@@ -10,8 +10,8 @@ public class AssetLoader {
 
     public static Sound hit, buttonClick;
     public static BitmapFont font40, font80, font120;
-    public static Texture bat, ball, playOn, playOff, cloud, cloud1, sun, background, mdgLogo, fan, achievement, achievementPressed, leaderboard, leaderboardPressed, scorecard, moonTexture, hitballTexture, aboutUsTexture, aboutUsSmallTexture;
-    public static Sprite batRegion, ballRegion, playRegionOn, playRegionOff, cloudRegion, cloud1Region, sunRegion, backgroundRegion, mdgLogoRegion, fanRegion, achievementRegion, achievementPressedRegion, leaderboardRegion, scorecardRegion, leaderboardPressedRegion, moonRegion, hitballRegion, aboutUsRegion, aboutUsSmallRegion;
+    public static Texture bat, ball, playOn, playOff, cloud, cloud1, sun, background, fan, achievement, achievementPressed, leaderboard, leaderboardPressed, scorecard, moonTexture, hitballTexture, aboutUsTexture, aboutUsSmallTexture;
+    public static Sprite batRegion, ballRegion, playRegionOn, playRegionOff, cloudRegion, cloud1Region, sunRegion, backgroundRegion, fanRegion, achievementRegion, achievementPressedRegion, leaderboardRegion, scorecardRegion, leaderboardPressedRegion, moonRegion, hitballRegion, aboutUsRegion, aboutUsSmallRegion;
 
     public static void load(int screenWidth) {
 
@@ -36,11 +36,6 @@ public class AssetLoader {
         background = new Texture(Gdx.files.internal("background.png"));
         backgroundRegion = new Sprite(background);
         backgroundRegion.flip(false, true);
-
-        mdgLogo = new Texture(Gdx.files.internal("mdg_logo.png"));
-        mdgLogo.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        mdgLogoRegion = new Sprite(mdgLogo);
-        mdgLogoRegion.flip(false, true);
 
         hitballTexture = new Texture(Gdx.files.internal("hitball_logo_unlined.png"));
         hitballTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -115,7 +110,6 @@ public class AssetLoader {
         cloud.dispose();
         cloud1.dispose();
         background.dispose();
-        mdgLogo.dispose();
         fan.dispose();
         sun.dispose();
         achievement.dispose();
