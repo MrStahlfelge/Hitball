@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.sdsmdg.cycle.TweenAccessors.VectorAccessor;
+import com.sdsmdg.cycle.chelpers.AssetLoader;
 import com.sdsmdg.cycle.gameworld.GameWorld;
 
 import aurelienribon.tweenengine.Tween;
@@ -25,7 +25,6 @@ public class Board {
     private GlyphLayout glyphLayout;
     private GameWorld myWorld;
     private int screenWidth, screenHeight;
-    private BitmapFont font40, font120;
     private TweenManager manager;
     private JumpingTextView textView;
     private boolean newBestScore = false;
@@ -46,8 +45,6 @@ public class Board {
         manager = new TweenManager();
 
         textView = new JumpingTextView("New Best Score!");
-
-        generateFont();
     }
 
     public void onGameRunning() {
@@ -68,19 +65,6 @@ public class Board {
                 .start(manager);
     }
 
-    public void generateFont() {
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font.otf"));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = (40 * screenWidth) / 480;//Scaling it according to the screenWidth
-        parameter.flip = true;
-        font40 = generator.generateFont(parameter);
-
-        parameter.size = (120 * screenWidth) / 480;
-        font120 = generator.generateFont(parameter);
-
-        generator.dispose();
-    }
-
     public void update(float delta) {
         manager.update(delta);
         textView.update(delta);
@@ -93,7 +77,7 @@ public class Board {
         drawText(String.valueOf(myWorld.getScore()),
                 batcher,
                 position.x, position.y - height / 5,
-                font120);
+                AssetLoader.font120);
 
         if (newBestScore) {
             textView.render(batcher,
@@ -105,13 +89,13 @@ public class Board {
                     batcher,
                     screenWidth - position.x,
                     position.y + height / 2 - (60 * screenWidth) / 480,
-                    font40
+                    AssetLoader.font40
             );
 
             drawText(String.valueOf(myWorld.getHighScore()),
                     batcher,
                     screenWidth - position.x, position.y + height / 2 - (30 * screenWidth) / 480,
-                    font40
+                    AssetLoader.font40
             );
 
         }

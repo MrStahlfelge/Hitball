@@ -18,7 +18,7 @@ public class GameRenderer {
     private GameWorld myWorld;
     private OrthographicCamera cam;
     private ShapeRenderer shapeRenderer;
-    private BitmapFont font40, font80;
+    private BitmapFont font80;
 
     private SpriteBatch batcher;
 
@@ -59,7 +59,6 @@ public class GameRenderer {
 
     private void initGameObjects() {
         //the parameter true ensures that text is displayed not flipped
-        font40 = AssetLoader.font40;
         font80 = AssetLoader.font80;
     }
 

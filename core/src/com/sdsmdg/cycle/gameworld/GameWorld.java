@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.Vector2;
 import com.sdsmdg.cycle.CGame;
+import com.sdsmdg.cycle.PlayServices;
 import com.sdsmdg.cycle.TweenAccessors.VectorAccessor;
 import com.sdsmdg.cycle.chelpers.AssetLoader;
 import com.sdsmdg.cycle.objects.Background;
@@ -135,7 +136,7 @@ public class GameWorld {
     }
 
     public void setHighScore(int score) {
-        game.playServices.submitScore(score);
+        game.playServices.submitToLeaderboard("", score, "");
         prefs.putInteger("highscore", score);
         prefs.flush();
     }
@@ -162,11 +163,11 @@ public class GameWorld {
         manager.update(delta);
 
         if (isBeginnerComplete()) {
-            game.playServices.unlockAchievementBeginner();
+            game.playServices.unlockAchievement(PlayServices.ACH_BEGINNER);
         }
 
         if (isBoredComplete()) {
-            game.playServices.unlockAchievementBored();
+            game.playServices.unlockAchievement(PlayServices.ACH_BORED);
         }
         /*
         These are the objects that need to be updated in every state of the game
@@ -213,9 +214,9 @@ public class GameWorld {
         countHeaven++;
         flag = false;
         if (countHeaven == 3) {
-            game.playServices.unlockAchievementIntoHeavens();
+            game.playServices.unlockAchievement(PlayServices.ACH_INTOHEAVEN);
         } else if (countHeaven == 4) {
-            game.playServices.unlockAchievementYouAreGod();
+            game.playServices.unlockAchievement(PlayServices.ACH_GOD);
         }
     }
 
@@ -418,18 +419,18 @@ public class GameWorld {
         gameState = GameState.OVER;
         incrementGamesPlayed();
         if (score == 2) {
-            game.playServices.unlockAchievement2();
+            game.playServices.unlockAchievement(PlayServices.ACH_TWO);
         } else if (score == 100) {
-            game.playServices.unlockAchievementCentury();
+            game.playServices.unlockAchievement(PlayServices.ACH_CENT);
         } else if (score == 50) {
-            game.playServices.unlockAchievementHalfCentury();
+            game.playServices.unlockAchievement(PlayServices.ACH_HALFCENT);
         } else if(score == 25) {
-            game.playServices.unlockAchievementSilver();
+            game.playServices.unlockAchievement(PlayServices.ACH_SILVER);
         } else if(score == 10) {
-            game.playServices.unlockAchievementDecade();
+            game.playServices.unlockAchievement(PlayServices.ACH_DECADE);
         }
         if (hitCount == 1) {
-            game.playServices.unlockAchievementTrickyOne();
+            game.playServices.unlockAchievement(PlayServices.ACH_TRICKY);
         }
         resetHitCount();
     }

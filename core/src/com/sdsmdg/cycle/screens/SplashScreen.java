@@ -37,8 +37,8 @@ public class SplashScreen implements Screen {
 
         this.game = game;
 
-        if (!game.playServices.isSignedIn())
-            game.playServices.signIn();
+        if (!game.playServices.isSessionActive())
+            game.playServices.resumeSession();
 
         float logoWidth = screenWidth / 2;
         float logoHeight = logoWidth;

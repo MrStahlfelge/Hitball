@@ -2,22 +2,15 @@ package com.sdsmdg.cycle;
 
 public interface PlayServices {
 
-    public void signIn();
-    public void signOut();
-    public void rateGame();
-    public void unlockAchievementBeginner();
-    public void unlockAchievement2();
-    public void unlockAchievementTrickyOne();
-    public void unlockAchievementCentury();
-    public void unlockAchievementHalfCentury();
-    public void unlockAchievementBored();
-    public void unlockAchievementIntoHeavens();
-    public void unlockAchievementYouAreGod();
-    public void unlockAchievementDecade();
-    public void unlockAchievementSilver();
-    public void submitScore(int highScore);
-    public void showAchievement();
-    public void showScore();
-    public boolean isSignedIn();
+    String ACH_BEGINNER = "AchievementBeginner";
+    String ACH_TWO = "Achievement2";
+    String ACH_TRICKY = "AchievementTrickyOne";
+    String ACH_CENT = "AchievementCentury";
+    String ACH_HALFCENT = "AchievementHalfCentury";
+    String ACH_BORED = "AchievementBored";
+    String ACH_INTOHEAVEN = "AchievementIntoHeavens";
+    String ACH_GOD = "AchievementYouAreGod";
+    String ACH_DECADE = "AchievementDecade";
+    String ACH_SILVER = "AchievementSilver";
 
 }

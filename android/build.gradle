@@ -1,24 +1,6 @@
-// Create a variable called keystorePropertiesFile, and initialize it to your
-// keystore.properties file, in the rootProject folder.
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-
-// Initialize a new Properties() object called keystoreProperties.
-def keystoreProperties = new Properties()
-
-// Load your keystore.properties file into the keystoreProperties object.
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
 android {
-    signingConfigs {
-        config {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-        }
-    }
-    buildToolsVersion "24.0.0"
-    compileSdkVersion 24
+    buildToolsVersion "26.0.2"
+    compileSdkVersion 26
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -32,10 +14,13 @@ android {
 
         instrumentTest.setRoot('tests')
     }
+    packagingOptions {
+        exclude 'META-INF/robovm/ios/robovm.xml'
+    }
     defaultConfig {
         applicationId "com.sdsmdg.cycle"
-        minSdkVersion 9
-        targetSdkVersion 24
+        minSdkVersion 16
+        targetSdkVersion 26
         versionCode 5
         versionName "1.03"
     }
@@ -43,7 +28,9 @@ android {
         debug {
         }
         release {
-            signingConfig signingConfigs.config
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
     dexOptions {
@@ -108,8 +95,8 @@ eclipse {
     }
 
     jdt {
-        sourceCompatibility = 1.6
-        targetCompatibility = 1.6
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
     }
 
     classpath {
@@ -127,6 +114,7 @@ eclipse {
         buildCommand "com.android.ide.eclipse.adt.ApkBuilder"
     }
 }
+
 // sets up the Android Idea project, using the old Ant based build.
 idea {
     module {
@@ -148,7 +136,4 @@ idea {
             }
         }
     }
-}
-dependencies {
-    compile "com.android.support:appcompat-v7:24.2.0"
 }

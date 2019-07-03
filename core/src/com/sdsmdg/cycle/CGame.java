@@ -5,13 +5,15 @@ import com.badlogic.gdx.Gdx;
 import com.sdsmdg.cycle.chelpers.AssetLoader;
 import com.sdsmdg.cycle.screens.SplashScreen;
 
+import de.golfgl.gdxgamesvcs.IGameServiceClient;
+
 public class CGame extends Game{
 
     private final String TAG = CGame.class.getSimpleName();
-    public PlayServices playServices;
+    public IGameServiceClient playServices;
     public AboutUs aboutUs;
 
-    public CGame(PlayServices playServices, AboutUs aboutUs) {
+    public CGame(IGameServiceClient playServices, AboutUs aboutUs) {
         this.playServices = playServices;
         this.aboutUs = aboutUs;
     }
@@ -27,5 +29,17 @@ public class CGame extends Game{
     public void dispose() {
         AssetLoader.dispose();
         super.dispose();
+    }
+
+    @Override
+    public void resume() {
+        super.resume();
+        playServices.resumeSession();
+    }
+
+    @Override
+    public void pause() {
+        super.pause();
+        playServices.pauseSession();
     }
 }

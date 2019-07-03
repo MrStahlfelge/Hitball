@@ -5,7 +5,6 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class AssetLoader {
 
@@ -97,19 +96,9 @@ public class AssetLoader {
     }
 
     private static void createFont(int screenWidth) {
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font.otf"));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = (40 * screenWidth) / 480;//Scaling it according to the screenWidth
-        parameter.flip = true;
-        font40 = generator.generateFont(parameter);
-
-        parameter.size = (80 * screenWidth) / 480;//Scaling it according to the screenWidth
-        font80 = generator.generateFont(parameter);
-
-        parameter.size = (120 * screenWidth) / 480;
-        font120 = generator.generateFont(parameter);
-
-        generator.dispose();
+        font40 = new BitmapFont(Gdx.files.internal("font40.fnt"), true);
+        font80 = new BitmapFont(Gdx.files.internal("font80.fnt"), true);
+        font120 = new BitmapFont(Gdx.files.internal("font120.fnt"), true);
     }
 
     private static void loadSounds() {

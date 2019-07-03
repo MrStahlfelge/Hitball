@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.sdsmdg.cycle.chelpers.AssetLoader;
 import com.sdsmdg.cycle.gameworld.GameWorld;
 
+import de.golfgl.gdxgamesvcs.GameServiceException;
+
 public class Button {
 
     float width, height;
@@ -67,12 +69,20 @@ public class Button {
         }
         //id == 1 means it is an achievement button
         else if (id == 1) {
-            myWorld.getGame().playServices.showAchievement();
+            try {
+                myWorld.getGame().playServices.showAchievements();
+            } catch (GameServiceException e) {
+                e.printStackTrace();
+            }
         }
 
         //id == 2 means it is a leaderboard button
         else if (id == 2) {
-            myWorld.getGame().playServices.showScore();
+            try {
+                myWorld.getGame().playServices.showLeaderboards("");
+            } catch (GameServiceException e) {
+                e.printStackTrace();
+            }
         }
 
         //id == 3 means it is an info button

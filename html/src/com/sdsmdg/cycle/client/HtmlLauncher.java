@@ -3,17 +3,27 @@ package com.sdsmdg.cycle.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+import com.sdsmdg.cycle.AboutUs;
 import com.sdsmdg.cycle.CGame;
+
+import de.golfgl.gdxgamesvcs.NoGameServiceClient;
 
 public class HtmlLauncher extends GwtApplication {
 
-        @Override
-        public GwtApplicationConfiguration getConfig () {
-                return new GwtApplicationConfiguration(480, 320);
-        }
+    @Override
+    public GwtApplicationConfiguration getConfig() {
+        GwtApplicationConfiguration gwtApplicationConfiguration = new GwtApplicationConfiguration(720, 1200);
+        gwtApplicationConfiguration.usePhysicalPixels = true;
+        return gwtApplicationConfiguration;
+    }
 
-        @Override
-        public ApplicationListener createApplicationListener () {
-                return new CGame();
-        }
+    @Override
+    public ApplicationListener createApplicationListener() {
+        return new CGame(new NoGameServiceClient(),
+                new AboutUs() {
+                    @Override
+                    public void onClick() {
+                    }
+                });
+    }
 }
