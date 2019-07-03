@@ -14,12 +14,33 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        return false;
+        if (myWorld.isRunning())
+            myWorld.getBat().onTouchDown();
+        else if(myWorld.isReady()) {
+            myWorld.getPlayReady().onTouchDown();
+
+        } else if(myWorld.isOver()) {
+            myWorld.getPlayButton().onTouchDown();
+
+        }
+
+        return true;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        return false;
+        if (myWorld.isRunning())
+            myWorld.getBat().onTouchUp();
+
+        else if(myWorld.isReady()) {
+            myWorld.getPlayReady().onTouchUp();
+
+        } else if(myWorld.isOver()) {
+            myWorld.getPlayButton().onTouchUp();
+
+        }
+
+        return true;
     }
 
     @Override
