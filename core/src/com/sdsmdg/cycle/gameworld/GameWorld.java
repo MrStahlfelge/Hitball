@@ -19,6 +19,7 @@ import java.util.List;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenEquations;
 import aurelienribon.tweenengine.TweenManager;
+import de.golfgl.gdxgamesvcs.IGameServiceClient;
 
 public class GameWorld {
 
@@ -108,6 +109,7 @@ public class GameWorld {
                 AssetLoader.achievementPressedRegion,
                 AssetLoader.achievementRegion,
                 1);
+        achievement.setVisible(game.playServices.isFeatureSupported(IGameServiceClient.GameServiceFeature.ShowAchievementsUI));
 
         float leaderWidth = screenWidth / 5, leaderHeight = screenWidth / 5;
         leaderBoardButton = new Button(this, 3 * screenWidth / 4, screenHeight * 0.75f,
@@ -115,6 +117,10 @@ public class GameWorld {
                 AssetLoader.leaderboardPressedRegion,
                 AssetLoader.leaderboardRegion,
                 2);
+        leaderBoardButton.setVisible(game.playServices.isFeatureSupported(IGameServiceClient.GameServiceFeature.ShowLeaderboardUI));
+
+        if (!leaderBoardButton.isVisible() && !achievement.isVisible())
+            playReady.setPosition(screenWidth / 2, screenHeight * 3 / 4);
 
         float infoWidth = screenWidth / 8, infoHeight = screenWidth / 8;
         infoButton = new Button(this, screenWidth - infoWidth / 1.5f, infoHeight / 1.5f,

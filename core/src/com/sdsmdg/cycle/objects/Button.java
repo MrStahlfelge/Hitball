@@ -20,6 +20,7 @@ public class Button {
     int id;//This determines which type of button is it
     float theta;
     Vector2 initialPos = new Vector2();
+    boolean visible = true;
 
     public Button(GameWorld world, float x, float y, float width, float height, TextureRegion regionOn, TextureRegion regionOff, int id) {
         this.height = height;
@@ -43,7 +44,7 @@ public class Button {
 
     public boolean isTouched(int x, int y) {
         rectangle.set(position.x - width / 2, position.y - height / 2, width, height);
-        return rectangle.contains(x, y);
+        return isVisible() && rectangle.contains(x, y);
     }
 
     public void update(float delta) {
@@ -53,7 +54,8 @@ public class Button {
     }
 
     public void onDraw(SpriteBatch batcher) {
-        batcher.draw(current, position.x - width / 2, position.y - height / 2, width, height);
+        if (isVisible())
+            batcher.draw(current, position.x - width / 2, position.y - height / 2, width, height);
     }
 
     public void onTouchDown() {
@@ -126,5 +128,13 @@ public class Button {
 
     public void setPosition(float x, float y) {
         this.position.set(x, y);
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 }
