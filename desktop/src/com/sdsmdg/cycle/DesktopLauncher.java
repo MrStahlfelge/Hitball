@@ -11,13 +11,7 @@ public class DesktopLauncher {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.width = 640;
         config.height = 960;
-        new LwjglApplication(new CGame(new NoGameServiceClient(),
-                new AboutUs() {
-                    @Override
-                    public void onClick() {
-
-                    }
-                }), config);
+        new LwjglApplication(new CGame(new NoGameServiceClient(), null), config);
     }
 
 

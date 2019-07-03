@@ -12,18 +12,13 @@ public class HtmlLauncher extends GwtApplication {
 
     @Override
     public GwtApplicationConfiguration getConfig() {
-        GwtApplicationConfiguration gwtApplicationConfiguration = new GwtApplicationConfiguration(720, 1200);
+        GwtApplicationConfiguration gwtApplicationConfiguration = new GwtApplicationConfiguration(640, 960);
         gwtApplicationConfiguration.usePhysicalPixels = true;
         return gwtApplicationConfiguration;
     }
 
     @Override
     public ApplicationListener createApplicationListener() {
-        return new CGame(new NoGameServiceClient(),
-                new AboutUs() {
-                    @Override
-                    public void onClick() {
-                    }
-                });
+        return new CGame(new NoGameServiceClient(), null);
     }
 }

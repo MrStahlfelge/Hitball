@@ -129,6 +129,8 @@ public class GameWorld {
                 AssetLoader.aboutUsRegion,
                 3);
 
+        infoButton.setVisible(game.aboutUs != null);
+
         board = new Board(this,
                 screenWidth / 2, screenWidth / 2,
                 new Vector2(screenWidth / 2, screenHeight / 2)
