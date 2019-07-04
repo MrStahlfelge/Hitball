@@ -7,6 +7,7 @@ public class InputHandler implements InputProcessor {
 
     private GameWorld myWorld;
     private static final String TAG = InputHandler.class.getSimpleName();
+    boolean keyDown;
 
     public InputHandler(GameWorld world) {
         myWorld = world;
@@ -20,6 +21,7 @@ public class InputHandler implements InputProcessor {
             myWorld.getPlayReady().onTouchDown();
 
         } else if(myWorld.isOver()) {
+            keyDown = true;
             myWorld.getPlayButton().onTouchDown();
 
         }
@@ -35,10 +37,12 @@ public class InputHandler implements InputProcessor {
         else if(myWorld.isReady()) {
             myWorld.getPlayReady().onTouchUp();
 
-        } else if(myWorld.isOver()) {
+        } else if(myWorld.isOver() && keyDown) {
             myWorld.getPlayButton().onTouchUp();
 
         }
+
+        keyDown = false;
 
         return true;
     }
