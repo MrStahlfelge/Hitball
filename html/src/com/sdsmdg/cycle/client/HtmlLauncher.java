@@ -17,7 +17,7 @@ public class HtmlLauncher extends GwtApplication {
 
     @Override
     public GwtApplicationConfiguration getConfig() {
-        GwtApplicationConfiguration gwtApplicationConfiguration = new GwtApplicationConfiguration(480, 720);
+        GwtApplicationConfiguration gwtApplicationConfiguration = new GwtApplicationConfiguration(640, 900);
         gwtApplicationConfiguration.usePhysicalPixels = true;
         return gwtApplicationConfiguration;
     }
