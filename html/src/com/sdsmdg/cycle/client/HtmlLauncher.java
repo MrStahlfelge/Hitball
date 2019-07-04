@@ -6,6 +6,7 @@ import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
 import com.sdsmdg.cycle.AboutUs;
 import com.sdsmdg.cycle.CGame;
 
+import de.golfgl.gdxgamesvcs.KongClient;
 import de.golfgl.gdxgamesvcs.NoGameServiceClient;
 
 public class HtmlLauncher extends GwtApplication {
@@ -19,6 +20,6 @@ public class HtmlLauncher extends GwtApplication {
 
     @Override
     public ApplicationListener createApplicationListener() {
-        return new CGame(new NoGameServiceClient(), null);
+        return new CGame(new KongClient(), null);
     }
 }

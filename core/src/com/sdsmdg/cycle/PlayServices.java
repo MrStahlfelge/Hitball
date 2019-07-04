@@ -12,5 +12,6 @@ public interface PlayServices {
     String ACH_GOD = "AchievementYouAreGod";
     String ACH_DECADE = "AchievementDecade";
     String ACH_SILVER = "AchievementSilver";
+    String LEAD_HITS = "MAIN";
 
 }

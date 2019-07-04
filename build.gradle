@@ -103,6 +103,8 @@ project(":html") {
         compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
         compile "org.mini2Dx:universal-tween-engine:6.3.3:sources"
         compile "de.golfgl.gdxgamesvcs:gdx-gamesvcs-core:$gamesvcsVersion:sources"
+        compile "de.golfgl.gdxgamesvcs:gdx-gamesvcs-html-kong:$gamesvcsVersion"
+        compile "de.golfgl.gdxgamesvcs:gdx-gamesvcs-html-kong:$gamesvcsVersion:sources"
     }
 }
 
