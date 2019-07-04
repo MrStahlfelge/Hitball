@@ -144,7 +144,6 @@ public class GameWorld {
     }
 
     public void setHighScore(int score) {
-        game.playServices.submitToLeaderboard(PlayServices.LEAD_HITS, score, "");
         prefs.putInteger("highscore", score);
         prefs.flush();
     }
@@ -396,6 +395,7 @@ public class GameWorld {
 
         boolean flag = false;
 
+        game.playServices.submitToLeaderboard(PlayServices.LEAD_HITS, score, "");
         if (score > getHighScore()) {
             setHighScore(score);
             flag = true;
